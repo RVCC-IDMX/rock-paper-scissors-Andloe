@@ -8,15 +8,22 @@
     <style>
 
         #result {
-
+            text-align: center;
+            font-size: 40px;
+            font-weight: 800;
+            font-family: Arial;
+            background-color: #f1c40f;
         }
         #bid{
             border:1px solid black;
             margin:20px;
             padding:20px;
             text-align:center;
+            font-family: Arial;
+            background-color: #8e44ad;
         }
         #bid h1 {
+            color: whitesmoke;
             padding:0px;
             margin:0px;
             padding-bottom:20px;
@@ -28,8 +35,10 @@
         }
         button {
             font-size:20px;
-            font-family:Georgia;
+            color: whitesmoke;
+            font-family: Arial;
             padding:20px;
+            background-color: #2980b9;
         }
 
     </style>
@@ -60,7 +69,6 @@
     </div>
 
     <script>
-
         /*
             Random number generator
 
@@ -93,7 +101,7 @@
             //1 is rock
             //2 is paper
             //3 is scissors
-            var computerChoice;
+            var computerChoice = choiceName[dice(3)-1];
 
             //This boolean value represents if the human won
             var humanWins = false;
@@ -104,7 +112,38 @@
             //STEP 2:
             //Check to see who won and set humanWins & tied
             //You'll need to build additional if statements
-            if () {}
+
+
+            //Tieds
+            if (choiceName[humanChoice] == "Rock" && computerChoice == "Rock") {
+                humanWins = false;
+                tied = true;
+            }
+            if (choiceName[humanChoice] == "Paper" && computerChoice == "Paper") {
+                humanWins = false;
+                tied = true;
+            }
+
+            if (choiceName[humanChoice] == "Scissors" && computerChoice == "Scissors") {
+                humanWins = false;
+                tied = true;
+            }
+            
+            //Win Scenarios
+            if (choiceName[humanChoice] == "Rock" && computerChoice == "Scissors") {
+                humanWins = true;
+                tied = false;
+            }
+            
+            if (choiceName[humanChoice] == "Paper" && computerChoice == "Rock") {
+                humanWins = true;
+                tied = false;
+            }
+
+            if (choiceName[humanChoice] == "Scissors" && computerChoice == "Paper") {
+                humanWins = true;
+                tied = false;
+            }
 
             //STEP 3:
             //Build a string to display the results of the game
@@ -115,20 +154,36 @@
             //    c) Whether you won or not
             //You may need if statements somewhere around this task
             var end;
+            if (tied){
+                end = "You choose " + choiceName[humanChoice] + "<br/>" + "The computer choose " + computerChoice + "<br/>" + "Tied";
+            }
 
+            if (humanWins){
+                end = "You choose " + choiceName[humanChoice] + "<br/>" + "The computer choose " + computerChoice + "<br/>" + "You Win!!!";
+            }
+
+            if (humanWins == false && tied == false){//***
+                end = "You choose " + choiceName[humanChoice] + "<br/>" + "The computer choose " + computerChoice + "<br/>" + "You Loose!";
+            }
             //STEP 4:
             //Reach out into the DOM with getElementById() and insert the end into the result div.
-
+            document.getElementById('result').innerHTML = end;
         }
 
         //This code links in the Rock button so that when it's clicked it fires off the game.
         document.getElementById("rock").onclick = () => {
-            rockPaperScissors(1);
+            rockPaperScissors(0);
         };
 
         //STEP 5:
         //Below, link up the other two buttons with an EventListener so that the user can click on them and activate the game.
+        document.getElementById("paper").onclick = () => {
+            rockPaperScissors(1);
+        };
 
+        document.getElementById("scissors").onclick = () => {
+            rockPaperScissors(2);
+        };
 
     </script>
     
