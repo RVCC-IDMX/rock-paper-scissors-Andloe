@@ -155,15 +155,15 @@
             //You may need if statements somewhere around this task
             var end;
             if (tied){
-                end = "You choose " + choiceName[humanChoice] + "<br/>" + "The computer choose " + computerChoice + "<br/>" + "Tied";
+                end = "You Chose " + choiceName[humanChoice] + "<br/>" + "The Computer Chose " + computerChoice + "<br/>" + "Tied!";
             }
 
             if (humanWins){
-                end = "You choose " + choiceName[humanChoice] + "<br/>" + "The computer choose " + computerChoice + "<br/>" + "You Win!!!";
+                end = "You Chose " + choiceName[humanChoice] + "<br/>" + "The Computer Chose " + computerChoice + "<br/>" + "You Win!!!";
             }
 
             if (humanWins == false && tied == false){//***
-                end = "You choose " + choiceName[humanChoice] + "<br/>" + "The computer choose " + computerChoice + "<br/>" + "You Loose!";
+                end = "You Chose " + choiceName[humanChoice] + "<br/>" + "The Computer Chose " + computerChoice + "<br/>" + "You Lose!";
             }
             //STEP 4:
             //Reach out into the DOM with getElementById() and insert the end into the result div.
